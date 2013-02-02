@@ -1,0 +1,3 @@
+class Thundergun extends TrashbagWeapon;
+
+
