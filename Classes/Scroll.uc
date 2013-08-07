@@ -16,4 +16,5 @@ class Scroll expands Decoration;
 defaultproperties {
     DrawType=DT_Mesh
     Mesh=scroll
+  ambientGlow=40
 }
