@@ -23,8 +23,6 @@ defaultproperties {
   LODBias=8
   CollisionHeight=26
   CollisionRadius=10
-  bBlockPlayers=True
-  bBlockActors=True
   bCollideActors=True
   bCollideWorld=True
   Physics=PHYS_Falling
