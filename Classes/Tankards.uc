@@ -8,11 +8,13 @@ Originally when the gold coins were minted they were backed by "the pewter stand
 #exec MESH IMPORT MESH=coin5 ANIVFILE=MODELS\coin5_a.3d DATAFILE=MODELS\coin5_d.3d X=0 Y=0 Z=0
 #exec MESH IMPORT MESH=coin10 ANIVFILE=MODELS\coin10_a.3d DATAFILE=MODELS\coin10_d.3d X=0 Y=0 Z=0
 #exec MESH IMPORT MESH=coin20 ANIVFILE=MODELS\coin20_a.3d DATAFILE=MODELS\coin20_d.3d X=0 Y=0 Z=0
+#exec MESH IMPORT MESH=coin50 ANIVFILE=MODELS\coin50_a.3d DATAFILE=MODELS\coin50_d.3d X=0 Y=0 Z=0
 #exec MESH IMPORT MESH=coin100 ANIVFILE=MODELS\coin100_a.3d DATAFILE=MODELS\coin100_d.3d X=0 Y=0 Z=0
 #exec MESH ORIGIN MESH=coin1 X=0 Y=0 Z=0
 #exec MESH ORIGIN MESH=coin5 X=0 Y=0 Z=0
 #exec MESH ORIGIN MESH=coin10 X=0 Y=0 Z=0
 #exec MESH ORIGIN MESH=coin20 X=0 Y=0 Z=0
+#exec MESH ORIGIN MESH=coin50 X=0 Y=0 Z=0
 #exec MESH ORIGIN MESH=coin100 X=0 Y=0 Z=-202
 
 #exec MESH SEQUENCE MESH=coin1 SEQ=All   STARTFRAME=0 NUMFRAMES=1
@@ -23,12 +25,14 @@ Originally when the gold coins were minted they were backed by "the pewter stand
 #exec MESH SEQUENCE MESH=coin10 SEQ=COIN10 STARTFRAME=0 NUMFRAMES=1
 #exec MESH SEQUENCE MESH=coin20 SEQ=All    STARTFRAME=0 NUMFRAMES=1
 #exec MESH SEQUENCE MESH=coin20 SEQ=COIN20 STARTFRAME=0 NUMFRAMES=1
+#exec MESH SEQUENCE MESH=coin50 SEQ=All    STARTFRAME=0 NUMFRAMES=1
+#exec MESH SEQUENCE MESH=coin50 SEQ=COIN50 STARTFRAME=0 NUMFRAMES=1
 #exec MESH SEQUENCE MESH=coin100 SEQ=All     STARTFRAME=0 NUMFRAMES=1
 #exec MESH SEQUENCE MESH=coin100 SEQ=COIN100 STARTFRAME=0 NUMFRAMES=1
 
 #exec TEXTURE IMPORT NAME=Jcointex1 FILE=MODELS\coin11.PCX
 #exec TEXTURE IMPORT NAME=Jcointex2 FILE=MODELS\coin1001.PCX
-#exec TEXTURE IMPORT NAME=Jtreasure1 FILE=MODELS\treasure1.PCX // treasure
+#exec TEXTURE IMPORT NAME=Jtreasure1 FILE=MODELS\treasure1.PCX
 
 #exec MESHMAP NEW   MESHMAP=coin1 MESH=coin1
 #exec MESHMAP SCALE MESHMAP=coin1 X=0.05 Y=0.05 Z=0.1
@@ -38,6 +42,8 @@ Originally when the gold coins were minted they were backed by "the pewter stand
 #exec MESHMAP SCALE MESHMAP=coin10 X=0.05 Y=0.05 Z=0.1
 #exec MESHMAP NEW   MESHMAP=coin20 MESH=coin20
 #exec MESHMAP SCALE MESHMAP=coin20 X=0.05 Y=0.05 Z=0.1
+#exec MESHMAP NEW   MESHMAP=coin50 MESH=coin50
+#exec MESHMAP SCALE MESHMAP=coin50 X=0.05 Y=0.05 Z=0.1
 #exec MESHMAP NEW   MESHMAP=coin100 MESH=coin100
 #exec MESHMAP SCALE MESHMAP=coin100 X=0.05 Y=0.05 Z=0.1
 
@@ -45,105 +51,81 @@ Originally when the gold coins were minted they were backed by "the pewter stand
 #exec MESHMAP SETTEXTURE MESHMAP=coin5 NUM=1 TEXTURE=Jcointex1
 #exec MESHMAP SETTEXTURE MESHMAP=coin10 NUM=1 TEXTURE=Jcointex1
 #exec MESHMAP SETTEXTURE MESHMAP=coin20 NUM=1 TEXTURE=Jcointex1
+#exec MESHMAP SETTEXTURE MESHMAP=coin50 NUM=1 TEXTURE=Jtreasure1
+#exec MESHMAP SETTEXTURE MESHMAP=coin50 NUM=2 TEXTURE=Jcointex1
 #exec MESHMAP SETTEXTURE MESHMAP=coin100 NUM=1 TEXTURE=Jcointex2
 #exec MESHMAP SETTEXTURE MESHMAP=coin100 NUM=2 TEXTURE=Jcointex1
 #exec MESHMAP SETTEXTURE MESHMAP=coin100 NUM=3 TEXTURE=Jtreasure1
 
-defaultproperties
-{
-    DrawType=DT_Mesh
-    Mesh=coin100
-}
+#exec TEXTURE IMPORT NAME=i_tankards FILE=TEXTURES\i_tankards.pcx flags=2 mips=off
 
 var() int amount; //The amount of coins in this pile.
 
-function postBeginPlay() {
-  super.postBeginPlay();
+function bool handlePickupQuery(Inventory i) {
+  if (i == none) return false;
+  if (i.class == class) {
+    if (bCanHaveMultipleCopies) {
+      amount += Tankards(i).amount;
+      setCoins();
+      log(numCopies $ " " $ amount $ " " $ Pickup(i).numCopies);
+      Pawn(owner).clientMessage(i.pickupMessage, 'pickup');
+      i.playSound(i.pickupSound,,2.0);
+      i.setReSpawn();
+    } else if (bDisplayableInv) {
+      if (charge < i.charge) charge = i.charge;
+      Pawn(owner).clientMessage(i.pickupMessage, 'pickup');
+      i.playSound(i.pickupSound,,2.0);
+      i.setReSpawn();
+    }
+    return true;
+  }
+  if (inventory == none) return false;
+  return inventory.handlePickupQuery(i);
+}
+
+function setCoins() {
   if (amount < 1) amount = 1;
-  numCopies = amount;
+  numCopies = amount - 1;
   if (amount == 1) {
     mesh=Mesh'coin1';
     pickupViewMesh=Mesh'coin1';
-    //change icon once I get them made
-  } else if (amount <= 5) {
+  } else if (amount <= 20) {
     mesh=Mesh'coin5';
     pickupViewMesh=Mesh'coin5';
-    //change icon once I get them made
-  } else if (amount <= 10) {
+  } else if (amount <= 40) {
     mesh=Mesh'coin10';
     pickupViewMesh=Mesh'coin10';
-    //change icon once I get them made
-  } else if (amount <= 30){
+  } else if (amount <= 80) {
     mesh=Mesh'coin20';
     pickupViewMesh=Mesh'coin20';
-  } else if (amount < 100){
-    mesh=Mesh'coin20';
-    pickupViewMesh=Mesh'coin20';
+  } else if (amount <= 150) {
+    mesh=Mesh'coin50';
+    pickupViewMesh=Mesh'coin50';
   } else {
     mesh=Mesh'coin100';
     pickupViewMesh=Mesh'coin100';
   }
 }
-/*
-function tick(float delta) {
-  super.tick(delta);
-  if (amount < 1) amount = 1;
-  numCopies = amount;
-  if (amount == 1) {
-    mesh=Mesh'coin1';
-    pickupViewMesh=Mesh'coin1';
-    //change icon once I get them made
-  } else if (amount <= 5) {
-    mesh=Mesh'coin5';
-    pickupViewMesh=Mesh'coin5';
-    //change icon once I get them made
-  } else if (amount <= 10) {
-    mesh=Mesh'coin10';
-    pickupViewMesh=Mesh'coin10';
-    //change icon once I get them made
-  } else {
-    mesh=Mesh'coin20';
-    pickupViewMesh=Mesh'coin20';
-    //change icon once I get them made
-  }
-}*/
+
+function postBeginPlay() {
+  super.postBeginPlay();
+  setCoins();
+}
 
 event drawEditorSelection(Canvas c) {
-  if (amount < 1) amount = 1;
-  numCopies = amount;
-  if (amount == 1) {
-    mesh=Mesh'coin1';
-    pickupViewMesh=Mesh'coin1';
-    //change icon once I get them made
-  } else if (amount <= 5) {
-    mesh=Mesh'coin5';
-    pickupViewMesh=Mesh'coin5';
-    //change icon once I get them made
-  } else if (amount <= 10) {
-    mesh=Mesh'coin10';
-    pickupViewMesh=Mesh'coin10';
-    //change icon once I get them made
-  } else if (amount <= 30){
-    mesh=Mesh'coin20';
-    pickupViewMesh=Mesh'coin20';
-  } else if (amount < 100){
-    mesh=Mesh'coin20';
-    pickupViewMesh=Mesh'coin20';
-  } else {
-    mesh=Mesh'coin100';
-    pickupViewMesh=Mesh'coin100';
-  }
+  setCoins();
 }
 
 defaultproperties {
-    DrawType=DT_Mesh
-    Mesh=coin1
-    pickupViewMesh=coin1
+  DrawType=DT_Mesh
+  Mesh=coin1
+  pickupViewMesh=coin1
   bEditorSelectRender=true
   oneuse=false
   eventOnUse=TankardsEvent
   itemName="Tankards"
   itemArticle="some"
   pickupMessage="Snagged some cash"
-  amount
+  icon=Texture'i_tankards'
+  amount=1
 }
