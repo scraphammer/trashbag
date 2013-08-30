@@ -1,0 +1,3 @@
+class GascanAmmo extends Ammo;
+
+

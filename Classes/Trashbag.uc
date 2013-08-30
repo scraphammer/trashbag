@@ -1,5 +1,17 @@
 class Trashbag extends Decoration;
 
+#exec AUDIO IMPORT FILE="Sounds\book1.wav" NAME="flipbook1" GROUP="Misc"
+#exec AUDIO IMPORT FILE="Sounds\book2.wav" NAME="flipbook2" GROUP="Misc"
+#exec AUDIO IMPORT FILE="Sounds\coinpick.wav" NAME="coinpick" GROUP="Misc"
+#exec AUDIO IMPORT FILE="Sounds\metpick.wav" NAME="metpick" GROUP="Misc"
+#exec AUDIO IMPORT FILE="Sounds\switch.wav" NAME="t_switch" GROUP="Misc"
+#exec AUDIO IMPORT FILE="Sounds\whack.wav" NAME="t_whack" GROUP="Misc"
+#exec AUDIO IMPORT FILE="Sounds\step1.wav" NAME="t_hard1" GROUP="Footstep"
+#exec AUDIO IMPORT FILE="Sounds\step2.wav" NAME="t_hard2" GROUP="Footstep"
+#exec AUDIO IMPORT FILE="Sounds\step3.wav" NAME="t_hard3" GROUP="Footstep"
+#exec AUDIO IMPORT FILE="Sounds\land1.wav" NAME="t_hardL" GROUP="Footstep"
+#exec AUDIO IMPORT FILE="Sounds\land2.wav" NAME="t_metL" GROUP="Footstep"
+
 #exec obj load file=detail.utx
 
 #exec MESH IMPORT MESH=trashbag ANIVFILE=MODELS\trashbag_a.3d DATAFILE=MODELS\trashbag_d.3d X=0 Y=0 Z=0

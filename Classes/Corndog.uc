@@ -1,5 +1,8 @@
 class corndog extends Health;
 
+/**
+I swear if I see that corndog one more time...
+*/
 
 #exec MESH IMPORT MESH=corndog ANIVFILE=MODELS\corndog_a.3d DATAFILE=MODELS\corndog_d.3d X=0 Y=0 Z=0
 #exec MESH ORIGIN MESH=corndog X=0 Y=0 Z=0

@@ -1,5 +1,9 @@
 class Hamburger expands Health;
 
+/**
+A delicious hamburger. The patty is made from 100% all natural free range Nali Cows and seasoned with a secret blend of herbs and spices known only to the mountain Nali tribes. The vegetables were handpicked with the utmost care for quality and flavor. This particular hamburger features a freshly baked bun and was grilled by the one and only War Meido Ividyon.
+*/
+
 #exec MESH IMPORT MESH=Hamburger01 ANIVFILE=MODELS\Hamburger01_a.3d DATAFILE=MODELS\Hamburger01_d.3d X=0 Y=0 Z=0
 #exec MESH ORIGIN MESH=Hamburger01 X=0 Y=0 Z=0
 
