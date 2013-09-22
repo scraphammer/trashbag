@@ -18,9 +18,11 @@ In the Dungeons of Doom a steak like this would be completely unsafe to eat afte
 
 #exec MESHMAP SETTEXTURE MESHMAP=steak NUM=1 TEXTURE=Jsteak1
 
+#exec texture import file=textures\i_steak.pcx name=i_steak flags=2 mips=off
+
 defaultproperties {
     DrawType=DT_Mesh
     Mesh=steak
   pickupViewMesh=steak
-  icon=if_i_see_that_corndog_one_more_time
+  icon=i_steak
 }

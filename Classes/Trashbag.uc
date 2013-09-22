@@ -1,6 +1,6 @@
 class Trashbag extends Decoration;
 
-#exec AUDIO IMPORT FILE="Sounds\book1.wav" NAME="flipbook1" GROUP="Misc"
+#exec AUDIO IMPORT FILE="Sounds\book.wav" NAME="flipbook1" GROUP="Misc"
 #exec AUDIO IMPORT FILE="Sounds\book2.wav" NAME="flipbook2" GROUP="Misc"
 #exec AUDIO IMPORT FILE="Sounds\coinpick.wav" NAME="coinpick" GROUP="Misc"
 #exec AUDIO IMPORT FILE="Sounds\metpick.wav" NAME="metpick" GROUP="Misc"
