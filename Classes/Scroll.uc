@@ -1,5 +1,11 @@
 class Scroll expands Decoration;
 
+/**
+IMPORTANT!: This is only one scroll. Multiple instances of Scroll shall be reffered to as "Multiple Instances of Scroll" unless you want to be sued by overzealous laywers who think they own the plural form of scroll.
+
+But anyway, I think it is a pretty nice scroll.
+*/
+
 #exec MESH IMPORT MESH=scroll ANIVFILE=MODELS\scroll_a.3d DATAFILE=MODELS\scroll_d.3d X=0 Y=0 Z=0
 #exec MESH ORIGIN MESH=scroll X=0 Y=0 Z=0
 

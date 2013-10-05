@@ -1,6 +1,10 @@
 // BoozeDeco2. Hello Scrag!
 class BoozeDeco2 expands Decoration;
 
+/**
+A cheap bottle of ultra-low quality booze. Drinking it will not give you extra adventures.
+*/
+
 #exec MESH IMPORT MESH=BoozeDeco2 ANIVFILE=MODELS\BoozeDeco2_a.3d DATAFILE=MODELS\BoozeDeco2_d.3d X=0 Y=0 Z=0 unmirror=1
 #exec MESH ORIGIN MESH=BoozeDeco2 X=0 Y=0 Z=0
 

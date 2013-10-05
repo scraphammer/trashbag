@@ -1,5 +1,9 @@
 class Trashbag extends Decoration;
 
+/*
+A cheap plastic trashbag, filled and then tied at the top. What is inside? Oh, just your hopes and dreams.
+*/
+
 #exec AUDIO IMPORT FILE="Sounds\book.wav" NAME="flipbook1" GROUP="Misc"
 #exec AUDIO IMPORT FILE="Sounds\book2.wav" NAME="flipbook2" GROUP="Misc"
 #exec AUDIO IMPORT FILE="Sounds\coinpick.wav" NAME="coinpick" GROUP="Misc"

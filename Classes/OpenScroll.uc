@@ -1,5 +1,9 @@
 class OpenScroll expands Decoration;
 
+/**
+A scroll looks nice rolled up, but you can't read it like that.
+*/
+
 #exec MESH IMPORT MESH=openscroll ANIVFILE=MODELS\openscroll_a.3d DATAFILE=MODELS\openscroll_d.3d X=0 Y=0 Z=0
 #exec MESH ORIGIN MESH=openscroll X=0 Y=0 Z=0
 
