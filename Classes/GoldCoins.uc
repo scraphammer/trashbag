@@ -2,7 +2,7 @@ class GoldCoins expands FiretrucksPickup;
 
 /**
 Originally when the gold coins were minted they were backed by "the pewter standard" which ensured the coins could be exchanged for pewter tankards on a 1-for-1 basis. In time though many more gold coins were produced than actual tankards, so the Tankard is now a fiat currency.
-
+<br/><br/>
 Over time a strict dictator also forced the people to abandon the moniker of "Tankards" (or "Tankz", in some seedier districts) in favor of something more generic and less off-putting like "Gold Coins." The fun-police were even dispaced to ensure that this new ruling was enforced. However, in the hearts and minds of the people they will always be Tankards.
 */
 
@@ -130,4 +130,6 @@ defaultproperties {
   pickupMessage="Snagged some gold"
   icon=Texture'i_tankards'
   amount=1
+  pickupsound=sound'coinpick'
+  activateSound=sound'shell2'
 }

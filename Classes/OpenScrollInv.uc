@@ -11,4 +11,12 @@ defaultproperties {
     Mesh=openscroll
   AmbientGlow=75
   icon=i_openscroll
+    pickupViewMesh=openscroll
+   pickupsound=sound'flipbook1'
+   pickupMessage="You got an open scroll"
+   activateSound=sound'flipbook2'
+  oneuse=false
+  eventOnUse=OpenScrollInvEvent
+  itemName="Open Scroll"
+  itemArticle="an"
 }

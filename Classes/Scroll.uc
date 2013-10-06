@@ -2,7 +2,7 @@ class Scroll expands Decoration;
 
 /**
 IMPORTANT!: This is only one scroll. Multiple instances of Scroll shall be reffered to as "Multiple Instances of Scroll" unless you want to be sued by overzealous laywers who think they own the plural form of scroll.
-
+<br/><br/>
 But anyway, I think it is a pretty nice scroll.
 */
 

@@ -23,6 +23,13 @@ In the Dungeons of Doom a steak like this would be completely unsafe to eat afte
 defaultproperties {
     DrawType=DT_Mesh
     Mesh=steak
-  pickupViewMesh=steak
-  icon=i_steak
+    pickupViewMesh=steak
+    icon=i_steak
+   pickupMessage="You got a raw steak"
+   pickupsound=sound'meatslap'
+   activateSound=sound'bloblgoop3'
+  oneuse=true
+  eventOnUse=SteakEvent
+  itemName="Steak"
+  itemArticle="some"
 }

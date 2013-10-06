@@ -1,6 +1,6 @@
 class Trashbag extends Decoration;
 
-/*
+/**
 A cheap plastic trashbag, filled and then tied at the top. What is inside? Oh, just your hopes and dreams.
 */
 
@@ -15,6 +15,8 @@ A cheap plastic trashbag, filled and then tied at the top. What is inside? Oh, j
 #exec AUDIO IMPORT FILE="Sounds\step3.wav" NAME="t_hard3" GROUP="Footstep"
 #exec AUDIO IMPORT FILE="Sounds\land1.wav" NAME="t_hardL" GROUP="Footstep"
 #exec AUDIO IMPORT FILE="Sounds\land2.wav" NAME="t_metL" GROUP="Footstep"
+#exec AUDIO IMPORT FILE="Sounds\ahoy_sailor.wav" NAME="ahoy_sailor" GROUP="Misc"
+#exec AUDIO IMPORT FILE="Sounds\meatslap.wav" NAME="meatslap" GROUP="Misc"
 
 #exec obj load file=detail.utx
 

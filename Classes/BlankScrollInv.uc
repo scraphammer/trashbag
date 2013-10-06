@@ -1,6 +1,6 @@
 class BlankScrollInv extends FiretrucksPickup;
 
-/*
+/**
 Ever wanted to carry a blank scroll around with you? Now you can!
 */
 
@@ -12,4 +12,12 @@ defaultproperties {
     Mesh=openscroll
   AmbientGlow=75
   icon=i_blankscroll
+    pickupViewMesh=openscroll
+   pickupsound=sound'flipbook1'
+   pickupMessage="You got a blank scroll"
+   activateSound=sound'flipbook2'
+  oneuse=false
+  eventOnUse=BlankScrollInvEvent
+  itemName="Blank Scroll"
+  itemArticle="a"
 }

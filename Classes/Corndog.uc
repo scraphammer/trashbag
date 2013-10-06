@@ -1,4 +1,4 @@
-class corndog extends Health;
+class Corndog extends Health;
 
 /**
 I swear if I see that corndog one more time...

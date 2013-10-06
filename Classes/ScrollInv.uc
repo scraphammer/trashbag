@@ -13,4 +13,12 @@ defaultproperties {
     Mesh=scroll
   ambientGlow=40
   icon=i_scroll
+    pickupViewMesh=scroll
+   pickupsound=sound'flipbook2'
+   pickupMessage="You got a scroll"
+   activateSound=sound'oll_journal_pick'
+  oneuse=false
+  eventOnUse=ScrollInvEvent
+  itemName="Scroll"
+  itemArticle="a"
 }
